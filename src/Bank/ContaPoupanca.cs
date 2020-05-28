@@ -8,7 +8,21 @@ namespace Bank
     }
     public override void retira(double valor)
     {
-      this.saldo -= (valor + 0.10);
+      if (!this.titular.maiorDeIdade())
+      {
+        valor = 200 + 0.05;
+        this.saca(valor);
+      }
+      else
+      {
+
+        this.saca(valor + 0.05);
+      }
+    }
+
+    public override void depositaCaixa(double valor)
+    {
+      this.saldo += (valor - 0.05);
     }
   }
 }
