@@ -63,7 +63,7 @@ namespace Bank
 
     }
 
-    public void depositaCaixa(double valor)
+    public virtual void depositaCaixa(double valor)
     {
       this.saldo += valor;
     }

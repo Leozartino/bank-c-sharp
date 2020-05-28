@@ -11,15 +11,18 @@ namespace Bank
       Client leonardo = new Client("Leonardo", "033.377.932-07", "68299", "Avenida Castro Alves", 23);
       Client pedro = new Client("Pedro", "053.367.932-01", "91209", "Avenida Castro Alves", 23);
 
-      Conta c = new ContaPoupanca(25356, leonardo, 170);
-      Conta d = new ContaPoupanca(52169, pedro, 150);
+      Conta c = new Conta(25356, leonardo, 100);
+      ContaPoupanca d = new ContaPoupanca(52169, pedro, 150);
 
-      TotalizadorContas conta01 = new TotalizadorContas();
+      d.retira(50);
+      System.Console.WriteLine($"{d.Saldo} {c.Saldo}");
 
-      conta01.Soma(c);
-      conta01.Soma(d);
+      TotalizadorContas somasContas = new TotalizadorContas();
 
-      System.Console.WriteLine(conta01.ValorTotal);
+      somasContas.Soma(c);
+      somasContas.Soma(d);
+
+      System.Console.WriteLine(somasContas.ValorTotal);
 
     }
   }
