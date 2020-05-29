@@ -1,28 +1,25 @@
-namespace Bank
-{
-  public class ContaPoupanca : Conta
-  {
-    public ContaPoupanca(int numero, Client titular, double saldo) : base(numero, titular, saldo)
-    {
+namespace Bank {
+  public class ContaPoupanca : Conta, ITributavel {
+    public ContaPoupanca (int numero, Client titular, double saldo) : base (numero, titular, saldo) {
 
     }
-    public override void retira(double valor)
-    {
-      if (!this.titular.maiorDeIdade())
-      {
+
+    public override void retira (double valor) {
+      if (!this.titular.maiorDeIdade ()) {
         valor = 200 + 0.05;
-        this.saca(valor);
-      }
-      else
-      {
+        this.saca (valor);
+      } else {
 
-        this.saca(valor + 0.05);
+        this.saca (valor + 0.05);
       }
     }
 
-    public override void depositaCaixa(double valor)
-    {
+    public override void depositaCaixa (double valor) {
       this.saldo += (valor - 0.05);
+    }
+
+    public double calculaTributo () {
+      return this.Saldo * 0.02;
     }
   }
 }
